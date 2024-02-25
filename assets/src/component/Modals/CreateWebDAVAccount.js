@@ -5,7 +5,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { FolderOpenOutlined, LabelOutlined } from "@material-ui/icons";
-import LockIcon from "@material-ui/icons/Lock";
 import PathSelector from "../FileManager/PathSelector";
 import { useTranslation } from "react-i18next";
 
@@ -38,7 +37,6 @@ export default function CreateWebDAVAccount(props) {
     const [value, setValue] = useState({
         name: "",
         path: "/",
-		password:"",
     });
     const [pathSelectDialog, setPathSelectDialog] = React.useState(false);
     const [selectedPath, setSelectedPath] = useState("");
@@ -115,18 +113,6 @@ export default function CreateWebDAVAccount(props) {
                             value={value.name}
                             onChange={handleInputChange("name")}
                             label={t("setting.annotation")}
-                        />
-                    </div>
-                    <div className={classes.formGroup}>
-                        <div className={classes.formIcon}>
-                            <LockIcon />
-                        </div>
-
-                        <TextField
-                            className={classes.input}
-                            value={value.password}
-                            onChange={handleInputChange("password")}
-                            label={t("setting.webdavPassword")}
                         />
                     </div>
                     <div className={classes.formGroup}>
