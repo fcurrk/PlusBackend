@@ -19,7 +19,6 @@ jobs:
           clean: false
           submodules: "recursive"
       - run: |
-          git tag 3.8.3
 	  git fetch --prune --unshallow --tags
 
       - name: Build and Release
