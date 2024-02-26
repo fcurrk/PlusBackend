@@ -4,7 +4,6 @@ env:
 before:
   hooks:
     - go mod tidy
-    - sh -c "cd assets && rm -rf build && yarn install --network-timeout 1000000 && yarn run build && cd ../ && zip -r - assets/build >assets.zip"
 builds:
   -
     env:
