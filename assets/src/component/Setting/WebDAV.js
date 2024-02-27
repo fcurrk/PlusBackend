@@ -180,7 +180,7 @@ export default function WebDAV() {
                 setAccounts([
                     {
                         ID: response.data.id,
-                        Password: response.data.password,
+                        Password: account.password,
                         CreatedAt: response.data.created_at,
                         Name: account.name,
                         Root: account.path,
