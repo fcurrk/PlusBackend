@@ -4,7 +4,7 @@ env:
 before:
   hooks:
     - go mod tidy
-    - sh -c "cd assets && rm -rf build && yarn install --network-timeout 1000000 && yarn run build --openssl-legacy-provider start&& cd ../ && zip -r - assets/build >assets.zip"
+    - sh -c "cd assets && rm -rf build && yarn install --network-timeout 1000000 && NODE_OPTIONS=--openssl-legacy-provider && yarn run build && cd ../ && zip -r - assets/build >assets.zip"
 builds:
   -
     env:
