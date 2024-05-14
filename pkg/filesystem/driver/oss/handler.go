@@ -172,6 +172,7 @@ func (handler *Driver) List(ctx context.Context, base string, recursive bool) ([
 		if err != nil {
 			continue
 		}
+		// 解决递归处理时将文件夹识别为文件的问题
 		if strings.HasSuffix(object.Key, "/") {
 			res = append(res, response.Object{
 				Name:         path.Base(object.Key),
