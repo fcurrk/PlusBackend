@@ -1123,6 +1123,8 @@ export default function VAS() {
                                                 <TableCell>
                                                     {row.ProductID === 0 &&
                                                         tApp("vas.credits")}
+                                                    {row.ProductID === 9 &&
+                                                        tApp("vas.invitationcode")}
                                                     {product[row.ProductID] !==
                                                         undefined && (
                                                         <>
