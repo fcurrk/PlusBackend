@@ -21,7 +21,7 @@ import { useCaptcha } from "../../hooks/useCaptcha";
 import { toggleSnackbar } from "../../redux/explorer";
 import { useTranslation } from "react-i18next";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { EmailOutlined, VpnKeyOutlined } from "@material-ui/icons";
+import { EmailOutlined, VpnKeyOutlined, PersonOutline } from "@material-ui/icons";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 

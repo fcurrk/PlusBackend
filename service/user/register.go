@@ -23,7 +23,7 @@ type UserRegisterService struct {
 // Register 新用户注册
 func (service *UserRegisterService) Register(c *gin.Context) serializer.Response {
 	// 相关设定
-	options := model.GetSettingByNames("email_active", "reg_captcha", "mail_domain_filter", "mail_domain_filter_list")
+	options := model.GetSettingByNames("email_active", "invitationcode_enabled", "reg_captcha", "mail_domain_filter", "mail_domain_filter_list")
 
 	// 检查是否在邮件域黑名单里
 	if options["mail_domain_filter"] != "0" {
