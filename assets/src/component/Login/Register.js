@@ -202,7 +202,7 @@ function Register() {
                                 />
                             </FormControl>
 
-                            {registerEnabled && (
+                            {invitationcodeEnabled && (
                                 <FormControl margin="normal" required fullWidth>
                                     <TextField
                                         variant={"outlined"}
