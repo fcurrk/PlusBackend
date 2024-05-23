@@ -139,6 +139,9 @@ export default function AddRedeem({ open, onClose, products, onSuccess }) {
                                     <MenuItem value={0}>
                                         {tApp("vas.credits")}
                                     </MenuItem>
+                                    <MenuItem value={9}>
+                                        {tApp("vas.invitationcode")}
+                                    </MenuItem>
                                 </Select>
                             </FormControl>
                         </div>

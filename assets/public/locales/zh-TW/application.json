@@ -584,6 +584,7 @@
     "additionalDescription": "補充描述",
     "announcement": "公告",
     "dontShowAgain": "不再顯示",
-    "openPaymentLink": "直接打開支付鏈接"
+    "openPaymentLink": "直接打開支付鏈接",
+    "invitationcode": "邀請碼"
   }
 }

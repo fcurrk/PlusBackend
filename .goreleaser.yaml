@@ -16,26 +16,10 @@ builds:
       - -X 'github.com/cloudreve/Cloudreve/v3/pkg/conf.BackendVersion=3.8.3.2405' -X 'github.com/cloudreve/Cloudreve/v3/pkg/conf.LastCommit={{.ShortCommit}}'
 
     goos:
-      - linux
       - windows
 
     goarch:
       - amd64
-      - arm
-      - arm64
-
-    goarm:
-      - 5
-      - 6
-      - 7
-
-    ignore:
-      - goos: windows
-        goarm: 5
-      - goos: windows
-        goarm: 6
-      - goos: windows
-        goarm: 7
 
 archives:
   - format: tar.gz

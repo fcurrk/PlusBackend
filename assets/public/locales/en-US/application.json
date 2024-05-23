@@ -587,6 +587,7 @@
     "additionalDescription": "Additional description",
     "announcement": "Announcement",
     "dontShowAgain": "Don't show again",
-    "openPaymentLink": "Open payment link"
+    "openPaymentLink": "Open payment link",
+    "invitationcode": "Invitation code"
   }
 }
