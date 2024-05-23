@@ -102,33 +102,36 @@ func (service *RedeemService) Query(c *gin.Context) serializer.Response {
 		name        = "积分"
 		productTime int64
 	)
-	if redeem.Type != model.ScoreOrderType {
-		packs, groups, err := decodeProductInfo()
-		if err != nil {
-			return serializer.Err(serializer.CodeInternalSetting, "Failed to parse product settings", err)
-		}
-		if redeem.Type == model.GroupOrderType {
-			for _, v := range groups {
-				if v.ID == redeem.ProductID {
-					name = v.Name
-					productTime = v.Time
-					break
+	if redeem.ProductID == 9 {
+		name = "邀请码"
+	} else {
+		if redeem.Type != model.ScoreOrderType {
+			packs, groups, err := decodeProductInfo()
+			if err != nil {
+				return serializer.Err(serializer.CodeInternalSetting, "Failed to parse product settings", err)
+			}
+			if redeem.Type == model.GroupOrderType {
+				for _, v := range groups {
+					if v.ID == redeem.ProductID {
+						name = v.Name
+						productTime = v.Time
+						break
+					}
+				}
+			} else {
+				for _, v := range packs {
+					if v.ID == redeem.ProductID {
+						name = v.Name
+						productTime = v.Time
+						break
+					}
 				}
 			}
-		} else {
-			for _, v := range packs {
-				if v.ID == redeem.ProductID {
-					name = v.Name
-					productTime = v.Time
-					break
-				}
+
+			if name == "积分" {
+				return serializer.Err(serializer.CodeNotFound, "", err)
 			}
 		}
-
-		if name == "积分" {
-			return serializer.Err(serializer.CodeNotFound, "", err)
-		}
-
 	}
 
 	return serializer.Response{

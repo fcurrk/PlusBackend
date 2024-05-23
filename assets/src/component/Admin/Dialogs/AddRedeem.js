@@ -54,8 +54,8 @@ export default function AddRedeem({ open, onClose, products, onSuccess }) {
         setLoading(true);
         input.num = parseInt(input.num);
         input.id = parseInt(input.id);
-        input.time = parseInt(input.id === 9 ? 1 : input.time);
         input.type = 2;
+        input.time = parseInt(input.id === 9 ? 1 : input.time);
         for (let i = 0; i < products.length; i++) {
             if (products[i].id === input.id) {
                 if (products[i].group_id !== undefined) {
