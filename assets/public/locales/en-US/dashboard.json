@@ -97,6 +97,8 @@
     "accountManagement": "Accounts",
     "allowNewRegistrations": "Accept new signups",
     "allowNewRegistrationsDes": "After disabled, no new users can be registered, unless manually added by admins.",
+    "enableInvitationCode": "Invitation Code",
+    "enableInvitationCodeDes": "After enabled, new users registration requires an invitation code.",
     "emailActivation": "Email activation",
     "emailActivationDes": "After enabled, new users need to click the activation link in the email to complete signups. Please make sure the email delivery settings are correct, otherwise the activation email will not be delivered.",
     "captchaForSignup": "Captcha for signups",

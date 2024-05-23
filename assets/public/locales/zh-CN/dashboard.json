@@ -58,7 +58,7 @@
     "telegramGroupLink": "https://t.me/cloudreve_official",
     "buyPro": "捐助开发者",
     "publishedAt": "发表于 <0></0>",
-    "newsTag": "notice"
+    "newsTag": "公告"
   },
   "settings": {
     "saved": "设置已更改",
@@ -97,6 +97,8 @@
     "accountManagement": "注册与登录",
     "allowNewRegistrations": "允许新用户注册",
     "allowNewRegistrationsDes": "关闭后，无法再通过前台注册新的用户",
+    "enableInvitationCode": "邀请码",
+    "enableInvitationCodeDes": "开启后，新用户注册需要邀请码。",
     "emailActivation": "邮件激活",
     "emailActivationDes": "开启后，新用户注册需要点击邮件中的激活链接才能完成。请确认邮件发送设置是否正确，否则激活邮件无法送达。",
     "captchaForSignup": "注册验证码",

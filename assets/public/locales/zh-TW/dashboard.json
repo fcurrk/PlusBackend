@@ -58,7 +58,7 @@
     "telegramGroupLink": "https://t.me/cloudreve_official",
     "buyPro": "購買捐助版",
     "publishedAt": "發表於 <0></0>",
-    "newsTag": "notice"
+    "newsTag": "公告"
   },
   "settings": {
     "saved": "設定已更改",
@@ -78,6 +78,7 @@
     "customFooterHTMLDes": "在頁面底部插入的自訂 HTML 程式碼",
     "announcement": "站點公告",
     "announcementDes": "展示給已登入使用者的公告，留空不展示。當此項目內容變更時，所有使用者會重新看到公告",
+    "supportHTML": "支持 HTML 代碼",
     "pwa": "漸進式應用 (PWA)",
     "smallIcon": "小圖示",
     "smallIconDes": "副檔名為 ico 的小圖示地址",
@@ -96,6 +97,8 @@
     "accountManagement": "註冊與登入",
     "allowNewRegistrations": "允許新用戶註冊",
     "allowNewRegistrationsDes": "關閉後，無法再透過前台註冊新的用戶",
+    "enableInvitationCode": "邀請碼",
+    "enableInvitationCodeDes": "開啟後，新用戶註冊需要邀請碼。",
     "emailActivation": "郵件啟用",
     "emailActivationDes": "開啟後，新用戶註冊需要點擊郵件中的啟用連結才能完成。請確認郵件發送設定是否正確，否則啟用郵件無法送達。",
     "captchaForSignup": "註冊驗證碼",
