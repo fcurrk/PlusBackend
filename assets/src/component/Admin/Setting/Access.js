@@ -45,7 +45,7 @@ export default function Access() {
     const [initCompleted, setInitComplete] = useState(false);
     const [options, setOptions] = useState({
         register_enabled: "1",
-        invitationcode_enabled: "1",
+        invitationcode_enabled: "0",
         default_group: "1",
         email_active: "0",
         login_captcha: "0",
