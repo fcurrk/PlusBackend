@@ -1108,7 +1108,7 @@ export default function VAS() {
                                             <TableCell>{t("qyt")}</TableCell>
                                             <TableCell>{t("code")}</TableCell>
                                             <TableCell>{t("status")}</TableCell>
-                                            <TableCell>{t("action")}</TableCell>
+                                            <TableCell>{t("actions")}</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
