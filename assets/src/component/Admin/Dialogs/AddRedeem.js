@@ -63,8 +63,8 @@ export default function AddRedeem({ open, onClose, products, onSuccess }) {
                 } else {
                     input.type = 0;
                 }
-                if (products[i].id === 9) {
-                    input.num = 1;
+                if (products[i].id == 9) {
+                    input.time = 1;
                 }
                 break;
             }
