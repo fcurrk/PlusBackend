@@ -1137,7 +1137,7 @@ export default function VAS() {
                                                         </>
                                                     )}
                                                     {row.ProductID !== 0 &&
-                                                         ProductID !== 9 &&
+                                                         row.ProductID !== 9 &&
                                                         !product[
                                                             row.ProductID
                                                         ] &&
