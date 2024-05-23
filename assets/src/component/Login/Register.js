@@ -82,6 +82,7 @@ function Register() {
 
     const [input, setInput] = useState({
         email: "",
+        invitationcode: "",
         password: "",
         password_repeat: "",
     });
