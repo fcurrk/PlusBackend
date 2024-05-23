@@ -97,6 +97,7 @@ func BuildSiteConfig(settings map[string]string, user *model.User, wopiExts []st
 			CaptchaType:          checkSettingValue(settings, "captcha_type"),
 			TCaptchaCaptchaAppId: checkSettingValue(settings, "captcha_TCaptcha_CaptchaAppId"),
 			RegisterEnabled:      model.IsTrueVal(checkSettingValue(settings, "register_enabled")),
+			InvitationCodeEnabled:model.IsTrueVal(checkSettingValue(settings, "invitationcode_enabled")),
 			ReportEnabled:        model.IsTrueVal(checkSettingValue(settings, "report_enabled")),
 			AppPromotion:         model.IsTrueVal(checkSettingValue(settings, "show_app_promotion")),
 			AppFeedbackLink:      checkSettingValue(settings, "app_feedback_link"),

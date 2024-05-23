@@ -11,6 +11,7 @@ var defaultSettings = []Setting{
 	{Name: "siteURL", Value: `http://localhost`, Type: "basic"},
 	{Name: "siteName", Value: `CloudrevePlus`, Type: "basic"},
 	{Name: "register_enabled", Value: `1`, Type: "register"},
+	{Name: "invitationcode_enabled", Value: `0`, Type: "register"},
 	{Name: "default_group", Value: `2`, Type: "register"},
 	{Name: "mail_domain_filter", Value: `0`, Type: "register"},
 	{Name: "mail_domain_filter_list", Value: `126.com,163.com,gmail.com,outlook.com,qq.com,foxmail.com,yeah.net,sohu.com,sohu.cn,139.com,wo.cn,189.cn,hotmail.com,live.com,live.cn`, Type: "register"},

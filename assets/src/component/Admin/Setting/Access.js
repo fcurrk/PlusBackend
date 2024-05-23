@@ -45,6 +45,7 @@ export default function Access() {
     const [initCompleted, setInitComplete] = useState(false);
     const [options, setOptions] = useState({
         register_enabled: "1",
+        invitationcode_enabled: "1",
         default_group: "1",
         email_active: "0",
         login_captcha: "0",
@@ -168,6 +169,27 @@ export default function Access() {
                                 />
                                 <FormHelperText id="component-helper-text">
                                     {t("allowNewRegistrationsDes")}
+                                </FormHelperText>
+                            </FormControl>
+                        </div>
+
+                        <div className={classes.form}>
+                            <FormControl fullWidth>
+                                <FormControlLabel
+                                    control={
+                                        <Switch
+                                            checked={
+                                                options.invitationcode_enabled === "1"
+                                            }
+                                            onChange={handleChange(
+                                                "invitationcode_enabled"
+                                            )}
+                                        />
+                                    }
+                                    label={t("enableInvitationCode")}
+                                />
+                                <FormHelperText id="component-helper-text">
+                                    {t("enableInvitationCodeDes")}
                                 </FormHelperText>
                             </FormControl>
                         </div>

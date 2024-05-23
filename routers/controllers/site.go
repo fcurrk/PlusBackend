@@ -32,6 +32,7 @@ func SiteConfig(c *gin.Context) {
 		"captcha_type",
 		"captcha_TCaptcha_CaptchaAppId",
 		"register_enabled",
+		"invitationcode_enabled",
 		"report_enabled",
 		"show_app_promotion",
 		"app_forum_link",
