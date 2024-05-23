@@ -54,40 +54,44 @@ func (service *RedeemService) Redeem(c *gin.Context, user *model.User) serialize
 		pack  *serializer.PackProduct
 		group *serializer.GroupProducts
 	)
-	if redeem.Type == model.GroupOrderType {
-		for _, v := range groups {
-			if v.ID == redeem.ProductID {
-				group = &v
-				break
+	if redeem.ProductID == 9 {
+		return serializer.Err(serializer.CodeNotFound, "", err)
+	} else {
+		if redeem.Type == model.GroupOrderType {
+			for _, v := range groups {
+				if v.ID == redeem.ProductID {
+					group = &v
+					break
+				}
 			}
-		}
 
-		if group == nil {
-			return serializer.Err(serializer.CodeNotFound, "", err)
-		}
-
-	} else if redeem.Type == model.PackOrderType {
-		for _, v := range packs {
-			if v.ID == redeem.ProductID {
-				pack = &v
-				break
+			if group == nil {
+				return serializer.Err(serializer.CodeNotFound, "", err)
 			}
+
+		} else if redeem.Type == model.PackOrderType {
+			for _, v := range packs {
+				if v.ID == redeem.ProductID {
+					pack = &v
+					break
+				}
+			}
+
+			if pack == nil {
+				return serializer.Err(serializer.CodeNotFound, "", err)
+			}
+
 		}
 
-		if pack == nil {
-			return serializer.Err(serializer.CodeNotFound, "", err)
+		err = payment.GiveProduct(user, pack, group, redeem.Num)
+		if err != nil {
+			return serializer.Err(serializer.CodeNotSet, "Redeem failed", err)
 		}
 
+		redeem.Use()
+
+		return serializer.Response{}
 	}
-
-	err = payment.GiveProduct(user, pack, group, redeem.Num)
-	if err != nil {
-		return serializer.Err(serializer.CodeNotSet, "Redeem failed", err)
-	}
-
-	redeem.Use()
-
-	return serializer.Response{}
 
 }
 
