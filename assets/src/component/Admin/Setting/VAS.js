@@ -1136,7 +1136,7 @@ export default function VAS() {
                                                             }
                                                         </>
                                                     )}
-                                                {(row.ProductID !== 0 && row.ProductID !== "") || (row.ProductID !== 9 && row.ProductID !== "") && t("invalidProduct")}
+                                                {(row.ProductID !== 0 || row.ProductID !== 9) && row.ProductID !== "" && t("invalidProduct")}
                                                 </TableCell>
                                                 <TableCell>{row.Num}</TableCell>
                                                 <TableCell>
