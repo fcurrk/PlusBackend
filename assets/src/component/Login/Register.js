@@ -215,14 +215,13 @@ function Register() {
                                         InputProps={{
                                             startAdornment: !isMobile && (
                                                 <InputAdornment position="start">
-                                                    <EmailOutlined />
+                                                    <PersonOutline />
                                                 </InputAdornment>
                                             ),
                                         }}
                                         onChange={handleInputChange("invitationcode")}
-                                        autoComplete
                                         value={input.invitationcode}
-                                        autoFocus
+                                        autoComplete
                                     />
                                 </FormControl>
                             )}
