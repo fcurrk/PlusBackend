@@ -1,6 +1,7 @@
 {
   "login": {
     "email": "Email",
+    "invitationcode": "Invitation code",
     "password": "Password",
     "captcha": "CAPTCHA",
     "captchaError": "Cannot load CAPTCHA: {{message}}",

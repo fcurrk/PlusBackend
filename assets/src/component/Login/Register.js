@@ -88,6 +88,10 @@ function Register() {
     const [loading, setLoading] = useState(false);
     const [emailActive, setEmailActive] = useState(false);
 
+    const invitationcodeEnabled = useSelector(
+        (state) => state.siteConfig.invitationcodeEnabled
+    );
+
     const title = useSelector((state) => state.siteConfig.title);
     const regCaptcha = useSelector((state) => state.siteConfig.regCaptcha);
 
@@ -197,6 +201,31 @@ function Register() {
                                     autoFocus
                                 />
                             </FormControl>
+
+                            {registerEnabled && (
+                                <FormControl margin="normal" required fullWidth>
+                                    <TextField
+                                        variant={"outlined"}
+                                        label={t("login.invitationcode")}
+                                        inputProps={{
+                                            name: "invitationcode",
+                                            type: "invitationcode",
+                                            id: "invitationcode",
+                                        }}
+                                        InputProps={{
+                                            startAdornment: !isMobile && (
+                                                <InputAdornment position="start">
+                                                    <EmailOutlined />
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                        onChange={handleInputChange("invitationcode")}
+                                        autoComplete
+                                        value={input.invitationcode}
+                                        autoFocus
+                                    />
+                                </FormControl>
+                            )}
                             <FormControl margin="normal" required fullWidth>
                                 <TextField
                                     variant={"outlined"}

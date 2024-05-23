@@ -1,6 +1,7 @@
 {
   "login": {
     "email": "电子邮箱",
+    "invitationcode": "邀请码",
     "password": "密码",
     "captcha": "验证码",
     "captchaError": "验证码加载失败: {{message}}",
