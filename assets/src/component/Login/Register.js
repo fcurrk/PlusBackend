@@ -150,7 +150,7 @@ function Register() {
             return;
         }
 		
-		let params = {  
+const params = {  
     userName: input.email,  
     Password: input.password,  
     ...captchaParamsRef.current,  
