@@ -136,6 +136,26 @@ function Register() {
             return;
         }
 
+        if (invitationcodeEnabled) {
+            API.get("/vas/redeem/" + input.invitationcode)
+               .then((response) => {
+                   setLoading(false);
+                   if (response.rawData.product_id !== 9) {
+                       ToggleSnackbar(
+                           "top",
+                           "right",
+                           t("vas.invitationcodeInvalid"),
+                           "warning"
+                       );
+                       return;
+                   }
+               })
+               .catch((error) => {
+                   setLoading(false);
+                   ToggleSnackbar("top", "right", error.message, "warning");
+               });
+        }
+
         setLoading(true);
         if (!isValidate.current.isValidate && regCaptcha) {
             validate(() => register(e), setLoading);
@@ -159,6 +179,28 @@ function Register() {
                         "success"
                     );
                 }
+				
+        if (invitationcodeEnabled) {
+            API.post("/vas/redeem/" + input.invitationcode)
+            .then(() => {
+                this.setState({
+                    loading: false,
+                    dialog: "success",
+                });
+            })
+            .catch((error) => {
+                this.setState({
+                    loading: false,
+                });
+                this.props.toggleSnackbar(
+                    "top",
+                    "right",
+                    error.message,
+                    "error"
+                );
+            });
+        }
+				
             })
             .catch((error) => {
                 setLoading(false);
@@ -210,7 +252,7 @@ function Register() {
                                         label={t("login.invitationcode")}
                                         inputProps={{
                                             name: "invitationcode",
-                                            type: "invitationcode",
+                                            type: "text",
                                             id: "invitationcode",
                                         }}
                                         InputProps={{

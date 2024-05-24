@@ -589,6 +589,7 @@
     "announcement": "Announcement",
     "dontShowAgain": "Don't show again",
     "openPaymentLink": "Open payment link",
-    "invitationcode": "Invitation code"
+    "invitationcode": "Invitation code",
+    "invitationcodeInvalid": "Invitation code invalid"
   }
 }

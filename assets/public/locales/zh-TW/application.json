@@ -586,6 +586,7 @@
     "announcement": "公告",
     "dontShowAgain": "不再顯示",
     "openPaymentLink": "直接打開支付鏈接",
-    "invitationcode": "邀請碼"
+    "invitationcode": "邀請碼",
+    "invitationcodeInvalid": "邀請碼無效"
   }
 }

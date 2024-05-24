@@ -589,6 +589,7 @@
     "announcement": "公告",
     "dontShowAgain": "不再显示",
     "openPaymentLink": "直接打开支付链接",
-    "invitationcode": "邀请码"
+    "invitationcode": "邀请码",
+    "invitationcodeInvalid": "邀请码无效"
   }
 }
