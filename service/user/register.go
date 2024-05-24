@@ -47,6 +47,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	// 创建新的用户对象
 	user := model.NewUser()
 	user.Email = service.UserName
+	if invitationcode_enabled { user.invitationCode = service.invitationCode }
 	user.Nick = strings.Split(service.UserName, "@")[0]
 	user.SetPassword(service.Password)
 	user.Status = model.Active
