@@ -158,7 +158,6 @@ function Register() {
                            t("vas.invitationcodeInvalid"),
                            "warning"
                        );
-                       return;
 				}
             })
             .catch((error) => {
