@@ -6,13 +6,12 @@ import {
     Button,
     Divider,
     FormControl,
-    Input,
-    InputLabel,
+    InputAdornment,
     Link,
-    makeStyles,
     Paper,
     TextField,
     Typography,
+    makeStyles,
 } from "@material-ui/core";
 import { Link as RouterLink, useHistory } from "react-router-dom";
 import API from "../../middleware/Api";
@@ -20,7 +19,6 @@ import EmailIcon from "@material-ui/icons/EmailOutlined";
 import { useCaptcha } from "../../hooks/useCaptcha";
 import { toggleSnackbar } from "../../redux/explorer";
 import { useTranslation } from "react-i18next";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import { EmailOutlined, VpnKeyOutlined, PersonOutline } from "@material-ui/icons";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -43,16 +41,14 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(
-            3
-        )}px`,
+        padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`,
     },
     avatar: {
         margin: theme.spacing(1),
         backgroundColor: theme.palette.secondary.main,
     },
     form: {
-        width: "100%", // Fix IE 11 issue.
+        width: "100%",
         marginTop: theme.spacing(1),
     },
     submit: {
@@ -63,13 +59,6 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         width: "100%",
         justifyContent: "space-between",
-    },
-    buttonContainer: {
-        display: "flex",
-    },
-    authnLink: {
-        textAlign: "center",
-        marginTop: 16,
     },
     avatarSuccess: {
         margin: theme.spacing(1),
@@ -123,47 +112,31 @@ function Register() {
     } = useCaptcha();
     const classes = useStyles();
 
-    const register = (e) => {
+    const checkInvitationCode = async () => {
+        try {
+            const response = await API.get("/vas/redeem/" + input.invitationcode);
+            return response.data.product_id === 9;
+        } catch (error) {
+            return false;
+        }
+    };
+
+    const register = async (e) => {
         e.preventDefault();
 
         if (input.password !== input.password_repeat) {
-            ToggleSnackbar(
-                "top",
-                "right",
-                t("login.passwordNotMatch"),
-                "warning"
-            );
+            ToggleSnackbar("top", "right", t("login.passwordNotMatch"), "warning");
             return;
         }
 
-        if (input.invitationcode == "") {
-            ToggleSnackbar(
-                "top",
-                "right",
-                t("vas.invitationcodeNull"),
-                "warning"
-            );
+        if (invitationcodeEnabled && input.invitationcode === "") {
+            ToggleSnackbar("top", "right", t("vas.invitationcodeNull"), "warning");
             return;
         }
-		
-        if (invitationcodeEnabled) {
-            API.get("/vas/redeem/" + input.invitationcode)
-            .then((response) => {
-                setLoading(false);
-				if (response.data.product_id !==9)
-				{
-                       ToggleSnackbar(
-                           "top",
-                           "right",
-                           t("vas.invitationcodeInvalid"),
-                           "warning"
-                       );
-				}
-            })
-            .catch((error) => {
-                setLoading(false);
-                ToggleSnackbar("top", "right", error.message, "warning");
-            });
+
+        if (invitationcodeEnabled && !(await checkInvitationCode())) {
+            ToggleSnackbar("top", "right", t("vas.invalidInvitationcode"), "warning");
+            return;
         }
 
         setLoading(true);
@@ -171,6 +144,7 @@ function Register() {
             validate(() => register(e), setLoading);
             return;
         }
+
         API.post("/user", {
             userName: input.email,
             Password: input.password,
@@ -182,25 +156,8 @@ function Register() {
                     setEmailActive(true);
                 } else {
                     history.push("/login?username=" + input.email);
-                    ToggleSnackbar(
-                        "top",
-                        "right",
-                        t("login.signUpSuccess"),
-                        "success"
-                    );
+                    ToggleSnackbar("top", "right", t("login.signUpSuccess"), "success");
                 }
-				
-        if (invitationcodeEnabled) {
-            API.post("/vas/redeem/" + input.invitationcode)
-            .then(() => {
-                setLoading(false);
-            })
-            .catch((error) => {
-                setLoading(false);
-                ToggleSnackbar("top", "right", error.message, "warning");
-            });
-        }
-				
             })
             .catch((error) => {
                 setLoading(false);
@@ -298,9 +255,7 @@ function Register() {
                                         type: "password",
                                         id: "pwdRepeat",
                                     }}
-                                    onChange={handleInputChange(
-                                        "password_repeat"
-                                    )}
+                                    onChange={handleInputChange("password_repeat")}
                                     InputProps={{
                                         startAdornment: !isMobile && (
                                             <InputAdornment position="start">
@@ -319,10 +274,7 @@ function Register() {
                                 fullWidth
                                 variant="contained"
                                 color="primary"
-                                disabled={
-                                    loading ||
-                                    (regCaptcha ? captchaLoading : false)
-                                }
+                                disabled={loading || (regCaptcha ? captchaLoading : false)}
                                 className={classes.submit}
                             >
                                 {t("login.signUp")}
