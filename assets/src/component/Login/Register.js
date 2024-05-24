@@ -89,9 +89,7 @@ function Register() {
     const [loading, setLoading] = useState(false);
     const [emailActive, setEmailActive] = useState(false);
 
-    const invitationcodeEnabled = useSelector(
-        (state) => state.siteConfig.invitationcodeEnabled
-    );
+    const invitationcodeEnabled = useSelector((state) => state.siteConfig.invitationcodeEnabled);
 
     const title = useSelector((state) => state.siteConfig.title);
     const regCaptcha = useSelector((state) => state.siteConfig.regCaptcha);
@@ -126,7 +124,17 @@ function Register() {
     const register = (e) => {
         e.preventDefault();
 
-        if (invitationcodeEnabled && input.invitationcode == "") {
+        if (invitationcodeEnabled) {
+            ToggleSnackbar(
+                "top",
+                "right",
+                t("vas.invitationcode"),
+                "warning"
+            );
+            return;
+        }
+		
+        if (input.invitationcode == "") {
             ToggleSnackbar(
                 "top",
                 "right",
