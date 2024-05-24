@@ -136,6 +136,16 @@ function Register() {
             return;
         }
 
+        if (input.invitationcode == "") {
+            ToggleSnackbar(
+                "top",
+                "right",
+                t("vas.invitationcodeInvalid"),
+                "warning"
+            );
+            return;
+        }
+		
         if (invitationcodeEnabled) {
             API.get("/vas/redeem/" + input.invitationcode)
                .then((response) => {
