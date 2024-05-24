@@ -149,12 +149,8 @@ function Register() {
         if (invitationcodeEnabled) {
             API.get("/vas/redeem/" + input.invitationcode)
             .then((response) => {
-                this.setState({
-                    loading: false,
-                    dialog: "redeem",
-                    redeemInfo: response.data,
-                });
-				if (redeemInfo.product_id !==9)
+                setLoading(false);
+				if (response.data.product_id !==9)
 				{
                        ToggleSnackbar(
                            "top",
@@ -166,15 +162,8 @@ function Register() {
 				}
             })
             .catch((error) => {
-                this.setState({
-                    loading: false,
-                });
-                this.props.toggleSnackbar(
-                    "top",
-                    "right",
-                    error.message,
-                    "error"
-                );
+                setLoading(false);
+                ToggleSnackbar("top", "right", error.message, "warning");
             });
         }
 
@@ -205,21 +194,11 @@ function Register() {
         if (invitationcodeEnabled) {
             API.post("/vas/redeem/" + input.invitationcode)
             .then(() => {
-                this.setState({
-                    loading: false,
-                    dialog: "success",
-                });
+                setLoading(false);
             })
             .catch((error) => {
-                this.setState({
-                    loading: false,
-                });
-                this.props.toggleSnackbar(
-                    "top",
-                    "right",
-                    error.message,
-                    "error"
-                );
+                setLoading(false);
+                ToggleSnackbar("top", "right", error.message, "warning");
             });
         }
 				
