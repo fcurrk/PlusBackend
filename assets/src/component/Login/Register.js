@@ -149,19 +149,17 @@ function Register() {
             validate(() => register(e), setLoading);
             return;
         }
-		
-const params = {  
-    userName: input.email,  
-    Password: input.password,  
-    ...captchaParamsRef.current,  
-};  
-  
-if (invitationcodeEnabled) {  
-    params.invitationCode = input.invitationcode;  
-}  
-  
-API.post("/user", params)
 
+        const params = {  
+            userName: input.email,  
+            Password: input.password,  
+            ...captchaParamsRef.current,  
+        };
+
+        if (invitationcodeEnabled) {  
+            params.invitationCode = input.invitationcode;  
+        }
+        API.post("/user", params)
             .then((response) => {
                 setLoading(false);
                 if (response.rawData.code === 203) {
