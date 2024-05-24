@@ -590,6 +590,7 @@
     "dontShowAgain": "Don't show again",
     "openPaymentLink": "Open payment link",
     "invitationcode": "Invitation code",
+    "invitationcodeNull": "Invitation code is Null",
     "invitationcodeInvalid": "Invitation code invalid"
   }
 }
