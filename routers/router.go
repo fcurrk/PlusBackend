@@ -182,7 +182,6 @@ func InitMasterRouter() *gin.Engine {
 			// 用户注册
 			user.POST("",
 				middleware.IsFunctionEnabled("register_enabled"),
-				middleware.IsFunctionEnabled("invitationcode_enabled"),
 				middleware.CaptchaRequired("reg_captcha"),
 				controllers.UserRegister,
 			)
