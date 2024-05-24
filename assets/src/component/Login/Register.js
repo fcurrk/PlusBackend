@@ -149,7 +149,8 @@ function Register() {
             validate(() => register(e), setLoading);
             return;
         }
-let params = {  
+		
+		let params = {  
     userName: input.email,  
     Password: input.password,  
     ...captchaParamsRef.current,  
@@ -159,7 +160,8 @@ if (invitationcodeEnabled) {
     params.invitationCode = input.invitationcode;  
 }  
   
-API.post("/user", params);
+API.post("/user", params)
+
             .then((response) => {
                 setLoading(false);
                 if (response.rawData.code === 203) {
