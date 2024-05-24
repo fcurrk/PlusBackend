@@ -124,17 +124,7 @@ function Register() {
     const register = (e) => {
         e.preventDefault();
 
-        if (invitationcodeEnabled) {
-            ToggleSnackbar(
-                "top",
-                "right",
-                t("vas.invitationcode"),
-                "warning"
-            );
-            return;
-        }
-		
-        if (input.invitationcode == "") {
+        if (invitationcodeEnabled && (input.invitationcode == "")) {
             ToggleSnackbar(
                 "top",
                 "right",
