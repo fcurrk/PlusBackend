@@ -150,7 +150,7 @@ function Register() {
             API.get("/vas/redeem/" + input.invitationcode)
                .then((response) => {
                    setLoading(false);
-                   if (response.rawData.product_id !== 9) {
+                   if (response.data.product_id !== 9) {
                        ToggleSnackbar(
                            "top",
                            "right",
