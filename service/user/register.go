@@ -53,7 +53,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	if isinvitationcode {
 		err := model.GetinvitationCode(invitation)
 		if err != nil {
-			return serializer.Err(serializer.CodeInvitationInvalid, "Invitation code invalid", err)
+			return serializer.Err(serializer.CodeInvitationInvalid, "", err)
 		}
 	}
 	user.Nick = strings.Split(service.UserName, "@")[0]
