@@ -25,3 +25,10 @@ func (redeem *Redeem) Use() {
 		"used": true,
 	})
 }
+
+// GetinvitationCode 根据code查找可用邀请码
+func GetinvitationCode(code string) (*Redeem, error) {
+	redeem := &Redeem{}
+	result := DB.Where("code = ? and used = ? and product_id= ?", code, false, 9).First(redeem)
+	return redeem, result.Error
+}

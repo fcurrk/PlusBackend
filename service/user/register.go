@@ -42,12 +42,19 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 
 	// 相关设定
 	isEmailRequired := model.IsTrueVal(options["email_active"])
+	isinvitationcode := model.IsTrueVal(options["invitationcode_enabled"])
 	defaultGroup := model.GetIntSetting("default_group", 2)
 
 	// 创建新的用户对象
 	user := model.NewUser()
 	user.Email = service.UserName
-	if invitationcode_enabled { user.invitationCode = service.invitationCode }
+	if isinvitationcode {
+		user.invitationCode = service.invitationCode
+		redeem, err := model.GetinvitationCode(user.invitationCode)
+		if err != nil {
+			return serializer.Err(serializer.CodeInvalidGiftCode, "Invitation code invalid", err)
+		}
+	}
 	user.Nick = strings.Split(service.UserName, "@")[0]
 	user.SetPassword(service.Password)
 	user.Status = model.Active
@@ -63,6 +70,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 		if expectedUser.Status == model.NotActivicated {
 			userNotActivated = true
 			user = expectedUser
+			if isinvitationcode { redeem.Use() }
 		} else {
 			return serializer.Err(serializer.CodeEmailExisted, "Email already in use", err)
 		}
