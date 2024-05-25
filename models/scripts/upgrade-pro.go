@@ -19,4 +19,10 @@ func (script UpgradeToPro) Run(ctx context.Context) {
 		"previous_group_id": 0,
 		"open_id":           "",
 	})
+	newSettings := model.Settings{
+		Type:  "register",
+		Name:  "invitationcode_enabled",
+		Value: "0",
+	}
+	model.DB.Model(&newSettings).Create(&newSettings)
 }
