@@ -587,7 +587,6 @@
     "dontShowAgain": "不再顯示",
     "openPaymentLink": "直接打開支付鏈接",
     "invitationcode": "邀請碼",
-    "invitationcodeNull": "邀請碼為空",
-    "invitationcodeInvalid": "邀請碼無效"
+    "invitationcodeNull": "邀請碼為空"
   }
 }

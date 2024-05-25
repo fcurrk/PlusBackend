@@ -71,7 +71,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 		if expectedUser.Status == model.NotActivicated {
 			userNotActivated = true
 			user = expectedUser
-			if isinvitationcode { model.UseinvitationCode(invitation) }
+			if isinvitationcode { UseinvitationCode(invitation) }
 		} else {
 			return serializer.Err(serializer.CodeEmailExisted, "Email already in use", err)
 		}
