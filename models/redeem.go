@@ -35,7 +35,6 @@ func GetinvitationCode(code string) error {
 
 // UseinvitationCode 使用邀请码
 func UseinvitationCode(code string) error {
-	redeem := &Redeem{}
 	result := DB.Where("code = ?", code).Updates(map[string]interface{}{"used": true})
 	return result.Error
 }
