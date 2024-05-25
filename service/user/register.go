@@ -65,17 +65,19 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	user.GroupID = uint(defaultGroup)
 	userNotActivated := false
 	// 创建用户
+	// userCreated := false
 	if err := model.DB.Create(&user).Error; err != nil {
 		//检查已存在使用者是否尚未激活
 		expectedUser, err := model.GetUserByEmail(service.UserName)
 		if expectedUser.Status == model.NotActivicated {
 			userNotActivated = true
 			user = expectedUser
-			if isinvitationcode { model.DB.Model("redeems").Where("code = ?", invitation).Updates(map[string]interface{}{"used": true}) }
 		} else {
 			return serializer.Err(serializer.CodeEmailExisted, "Email already in use", err)
 		}
-	}
+} else {
+model.UseinvitationCode(invitation)
+}
 
 	// 发送激活邮件
 	if isEmailRequired {
