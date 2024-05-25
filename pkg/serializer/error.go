@@ -198,6 +198,8 @@ const (
 	CodeInvalidSign = 40071
 	// 管理员无法购买用户组
 	CodeFulfillAdminGroup = 40072
+	// 邀请码无效
+	CodeInvitationInvalid = 40073
 	// CodeDBError 数据库操作失败
 	CodeDBError = 50001
 	// CodeEncryptError 加密失败
@@ -222,8 +224,6 @@ const (
 	CodeParamErr = 40001
 	// CodeNotSet 未定错误，后续尝试从error中获取
 	CodeNotSet = -1
-	// 邀请码无效
-	CodeInvitationInvalid = 40094
 )
 
 // DBErr 数据库操作失败
