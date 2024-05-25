@@ -51,11 +51,9 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	user.Email = service.UserName
 	invitation := service.InvitationCode
 	if isinvitationcode {
-		redeem, err := model.GetinvitationCode(invitation)
+		_, err := model.GetinvitationCode(invitation)
 		if err != nil {
 			return serializer.Err(serializer.CodeInvalidGiftCode, "", err)
-		} else {
-		redeem.Use()
 		}
 	}
 	user.Nick = strings.Split(service.UserName, "@")[0]
@@ -77,7 +75,15 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 		} else {
 			return serializer.Err(serializer.CodeEmailExisted, "Email already in use", err)
 		}
-} 
+	} else if isinvitationcode {
+			redeem, err := model.GetinvitationCode(invitation)
+			if err != nil {
+				return serializer.Err(serializer.CodeInvalidGiftCode, "", err)
+			} else {
+			redeem.User()
+			}
+		}
+
 
 	// 发送激活邮件
 	if isEmailRequired {
