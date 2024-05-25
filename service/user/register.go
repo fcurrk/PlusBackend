@@ -71,7 +71,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 		if expectedUser.Status == model.NotActivicated {
 			userNotActivated = true
 			user = expectedUser
-			if isinvitationcode { model.UseinvitationCode(invitation) }
+			if isinvitationcode { UseinvitationCod(invitation) }
 		} else {
 			return serializer.Err(serializer.CodeEmailExisted, "Email already in use", err)
 		}
@@ -136,4 +136,9 @@ func (service *SettingService) Activate(c *gin.Context) serializer.Response {
 	user.SetStatus(model.Active)
 
 	return serializer.Response{Data: user.Email}
+}
+
+// UseinvitationCode 使用邀请码
+func UseinvitationCode(code string) {
+	DB.Table("redeems").Where("code = ?", code).Updates(map[string]interface{}{"used": true})
 }

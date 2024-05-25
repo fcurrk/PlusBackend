@@ -34,6 +34,6 @@ func GetinvitationCode(code string) error {
 }
 
 // UseinvitationCode 使用邀请码
-func (redeem *Redeem) UseinvitationCode(code string) {
-	DB.Model(redeem).Where("code = ?", code).Updates(map[string]interface{}{"used": true})
+func UseinvitationCode(code string) {
+	DB.Table("redeems").Where("code = ?", code).Updates(map[string]interface{}{"used": true})
 }
