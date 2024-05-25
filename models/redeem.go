@@ -27,14 +27,8 @@ func (redeem *Redeem) Use() {
 }
 
 // GetinvitationCode 根据code查找可用邀请码
-func GetinvitationCode(code string) error {
+func GetinvitationCode(code string) (*Redeem, error) {
 	redeem := &Redeem{}
 	result := DB.Where("code = ? and used = ? and product_id= ?", code, false, 9).First(redeem)
-	return result.Error
-}
-
-// UseinvitationCode 使用邀请码
-func UseinvitationCode(code string) error {
-	result := DB.Where("code = ?", code).Updates(map[string]interface{}{"used": true})
-	return result.Error
+	return redeem, result.Error
 }

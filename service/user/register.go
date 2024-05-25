@@ -51,7 +51,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	user.Email = service.UserName
 	invitation := service.InvitationCode
 	if isinvitationcode {
-		err := model.GetinvitationCode(invitation)
+		redeem, err := model.GetinvitationCode(invitation)
 		if err != nil {
 			return serializer.Err(serializer.CodeInvalidGiftCode, "", err)
 		} else {
