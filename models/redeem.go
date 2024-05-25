@@ -35,5 +35,5 @@ func GetinvitationCode(code string) error {
 
 // UseinvitationCode 使用邀请码
 func UseinvitationCode(code string) {
-	DB.Where("code = ?", code).Updates(map[string]interface{}{"user": true})
+	DB.Where("code = ?", code).Updates(map[string]interface{}{"used": true})
 }

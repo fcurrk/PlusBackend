@@ -222,6 +222,8 @@ const (
 	CodeParamErr = 40001
 	// CodeNotSet 未定错误，后续尝试从error中获取
 	CodeNotSet = -1
+	// 邀请码无效
+	CodeInvitationInvalid = 40094
 )
 
 // DBErr 数据库操作失败
