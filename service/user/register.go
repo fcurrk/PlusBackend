@@ -49,8 +49,8 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	// 创建新的用户对象
 	user := model.NewUser()
 	user.Email = service.UserName
+	invitation := service.InvitationCode
 	if isinvitationcode {
-		invitation := service.InvitationCode
 		err := model.GetinvitationCode(invitation)
 		if err != nil {
 			return serializer.Err(serializer.CodeInvalidGiftCode, "Invitation code invalid", err)
