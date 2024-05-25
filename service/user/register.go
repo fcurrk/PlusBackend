@@ -71,7 +71,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 		if expectedUser.Status == model.NotActivicated {
 			userNotActivated = true
 			user = expectedUser
-			if isinvitationcode { model.DB.Model(&model.Redeem{}).Where("code = ?", code).Updates(map[string]interface{}{"used": true}) }
+			if isinvitationcode { model.DB.Model(&model.Redeem{}).Where("code = ?", invitation).Updates(map[string]interface{}{"used": true}) }
 		} else {
 			return serializer.Err(serializer.CodeEmailExisted, "Email already in use", err)
 		}
