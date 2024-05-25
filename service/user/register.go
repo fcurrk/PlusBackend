@@ -80,7 +80,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 			if err != nil {
 				return serializer.Err(serializer.CodeInvalidGiftCode, "", err)
 			} else {
-			redeem.User()
+			redeem.Use()
 			}
 		}
 
