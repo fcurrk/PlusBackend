@@ -53,7 +53,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	if isinvitationcode {
 		_, err := model.GetinvitationCode(invitation)
 		if err != nil {
-			return serializer.Err(serializer.CodeInvitationInvalid, "", err)
+			return serializer.Err(serializer.CodeInvitationInvalid, "", nil)
 		}
 	}
 	user.Nick = strings.Split(service.UserName, "@")[0]
@@ -78,7 +78,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	} else if isinvitationcode {
 			redeem, err := model.GetinvitationCode(invitation)
 			if err != nil {
-				return serializer.Err(serializer.CodeInvitationInvalid, "", err)
+				return serializer.Err(serializer.CodeInvitationInvalid, "", nil)
 			} else {
 			redeem.Use()
 			}
