@@ -218,7 +218,7 @@ function Register() {
                             </FormControl>
 
                             {invitationcodeEnabled && (
-                                <FormControl margin="normal" required fullWidth>
+                                <FormControl margin="normal" fullWidth>
                                     <TextField
                                         variant={"outlined"}
                                         label={t("login.invitationcode")}
