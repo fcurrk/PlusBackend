@@ -18,6 +18,7 @@ type UserRegisterService struct {
 	//TODO 细致调整验证规则
 	UserName string `form:"userName" json:"userName" binding:"required,email"`
 	Password string `form:"Password" json:"Password" binding:"required,min=4,max=64"`
+	InvitationCode string `form:"invitationCode" json:"invitationCode" binding:"required,max=64"`
 }
 
 // Register 新用户注册
@@ -49,8 +50,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	user := model.NewUser()
 	user.Email = service.UserName
 	if isinvitationcode {
-		user.invitationCode = service.invitationCode
-		redeem, err := model.GetinvitationCode(user.invitationCode)
+		err := model.GetinvitationCode(service.invitationCode)
 		if err != nil {
 			return serializer.Err(serializer.CodeInvalidGiftCode, "Invitation code invalid", err)
 		}
