@@ -50,7 +50,8 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	user := model.NewUser()
 	user.Email = service.UserName
 	if isinvitationcode {
-		err := model.GetinvitationCode(service.invitationCode)
+		invitationcode = service.invitationCode
+		err := model.GetinvitationCode(invitationcode)
 		if err != nil {
 			return serializer.Err(serializer.CodeInvalidGiftCode, "Invitation code invalid", err)
 		}
@@ -70,7 +71,7 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 		if expectedUser.Status == model.NotActivicated {
 			userNotActivated = true
 			user = expectedUser
-			if isinvitationcode { redeem.Use() }
+			if isinvitationcode { model.UseinvitationCode(invitationcode) }
 		} else {
 			return serializer.Err(serializer.CodeEmailExisted, "Email already in use", err)
 		}

@@ -32,3 +32,8 @@ func GetinvitationCode(code string) (*Redeem, error) {
 	result := DB.Where("code = ? and used = ? and product_id= ?", code, false, 9).First(redeem)
 	return redeem, result.Error
 }
+
+// UseinvitationCode 使用邀请码
+func UseinvitationCode(code string) {
+	DB.Where("code = ?", code).Updates(map[string]interface{}{"user": true})
+}
