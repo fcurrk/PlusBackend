@@ -20,7 +20,7 @@ func (script UpgradeToPro) Run(ctx context.Context) {
 		"open_id":           "",
 	})
 
-	model.DB.Model(model.Settings{}).Create(map[string]interface{}{
+	model.DB.Model(model.Setting{}).Create(map[string]interface{}{
 		"Type":  "register",
 		"Name":  "invitationcode_enabled",
 		"Value": 0,
