@@ -65,7 +65,6 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 	user.GroupID = uint(defaultGroup)
 	userNotActivated := false
 	// 创建用户
-	// userCreated := false
 	if err := model.DB.Create(&user).Error; err != nil {
 		//检查已存在使用者是否尚未激活
 		expectedUser, err := model.GetUserByEmail(service.UserName)
