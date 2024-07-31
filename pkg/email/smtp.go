@@ -2,7 +2,7 @@ package email
 
 import (
 	"time"
-
+	"fmt"
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
 	"github.com/go-mail/mail"
 	"github.com/google/uuid"
@@ -51,7 +51,7 @@ func (client *SMTP) Send(to, title, body string) error {
 	m.SetAddressHeader("Reply-To", client.Config.ReplyTo, client.Config.Name)
 	m.SetHeader("To", to)
 	m.SetHeader("Subject", title)
-	m.SetHeader("Message-ID", util.StrConcat(`"<`, uuid.NewString(), `@`, `cloudreveplus`, `>"`))
+	m.SetHeader("Message-ID", fmt.Sprintf("<%s@%s>", uuid.NewString(), "cloudreve"))
 	m.SetBody("text/html", body)
 	client.ch <- m
 	return nil
